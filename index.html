@@ -12,6 +12,8 @@
       padding: 0;
       overflow: hidden;
       height: 100%;
+      -webkit-user-select: none; /* Added to support Safari */
+      user-select: none; /* Added for non-webkit browsers */
     }
     .video-background {
       position: absolute;
@@ -33,13 +35,25 @@
       justify-content: center;
       height: 100%;
     }
+    button {
+      padding: 10px 20px;
+      font-size: 1em;
+      cursor: pointer;
+      background-color: #333;
+      color: white;
+      border: none;
+      border-radius: 5px;
+    }
+    button:focus {
+      outline: none;
+    }
   </style>
 </head>
 <body>
 
   <!-- Fullscreen video background -->
-  <video class="video-background" autoplay loop muted playsinline>
-    <source src="Main/newerme.mp4" type="video/mp4" aria-label="Background video">
+  <video class="video-background" autoplay loop muted playsinline aria-label="Background video">
+    <source src="Main/newerme.mp4" type="video/mp4">
     <!-- Fallback message for unsupported browsers -->
     <p>Your browser does not support the video tag.</p>
   </video>
@@ -51,12 +65,12 @@
   </div>
 
   <!-- Accessible Play Button Example -->
-  <button aria-label="Play Video" onclick="document.querySelector('.video-background').play()">Play</button>
+  <button aria-label="Play Video" onclick="document.querySelector('.video-background').play()">Play Video</button>
 
   <!-- Form Example with Labels -->
   <form>
     <label for="email">Email:</label>
-    <input type="email" id="email" placeholder="Enter your email" required>
+    <input type="email" id="email" placeholder="Enter your email" required aria-label="Email input">
     <button type="submit" aria-label="Submit Form">Submit</button>
   </form>
 
